@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-volt-primary: var(--accent);
+  --color-volt-orange: #F27D26;
+  --color-volt-teal: #48C1C2;
+  --color-volt-purple: #6B5EAE;
+}
+
+:root {
+  /* Light Mode (Default) */
+  --desktop-bg: #f3f4f6;
+  --window-bg: #ffffff;
+  --sidebar-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --hover-bg: #f1f5f9;
+  --border-color: #e5e7eb;
+  --text-primary: #111111;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --toggle-on: #6366f1;
+  --toggle-off: #d1d5db;
+  --toggle-knob: #ffffff;
+}
+
+body.light-mode {
+  --desktop-bg: #f3f4f6;
+  --window-bg: #ffffff;
+  --sidebar-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --hover-bg: #f1f5f9;
+  --border-color: #e5e7eb;
+  --text-primary: #111111;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --toggle-on: #6366f1;
+  --toggle-off: #d1d5db;
+  --toggle-knob: #ffffff;
+}
+
+body.dark-mode {
+  --desktop-bg: #0f172a;
+  --window-bg: #111827;
+  --sidebar-bg: #0b1220;
+  --card-bg: #1f2937;
+  --hover-bg: #374151;
+  --border-color: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #6366f1;
+  --toggle-on: #6366f1;
+  --toggle-off: #4b5563;
+  --toggle-knob: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+    background-color: var(--desktop-bg);
+    color: var(--text-primary);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+}
+
+.glass-panel {
+  background-color: var(--window-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  @apply backdrop-blur-xl;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-volt {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  @apply rounded-[14px];
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-volt:hover {
+  background-color: var(--hover-bg);
+}
+
+.sidebar-volt {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.window-header {
+  background-color: var(--window-bg);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  @apply backdrop-blur-md;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.taskbar-item {
+  @apply hover:bg-white/10 rounded-xl transition-all duration-200 active:scale-90;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
